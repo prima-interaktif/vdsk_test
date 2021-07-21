@@ -42,17 +42,17 @@ class _MyAppState extends State<MyApp> {
     return configuration;
   }
 
-   @override
+  @override
   void initState() {
     super.initState();
     VESDK.unlockWithLicense("assets/vesdk_license");
   }
 
   void presentEditor() async {
-    
-    final result = await VESDK.openEditor(
-        Video.composition(videos: ["assets/Skater.mp4"]),
-        configuration: createConfiguration());
+    // final result = await VESDK.openEditor(
+    //     Video.composition(videos: ["assets/Skater.mp4"]),
+    //     configuration: createConfiguration());
+    final result = await VESDK.openEditor(Video("assets/Mantis.mp4"));
     print(result?.toJson());
   }
 

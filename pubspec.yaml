@@ -37,6 +37,7 @@ flutter:
 
   assets:
     - assets/Skater.mp4
+    - assets/Mantis.mp4
     - assets/Flutter-logo.png
     - assets/imgly-Logo.png
     - assets/vesdk_license.android
