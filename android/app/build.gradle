@@ -27,14 +27,15 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'ly.img.android.sdk'
 
 imglyConfig {
-    modules {
-       
+    modules {       
         include 'ui:filter'
         include 'ui:overlay'
         include 'ui:video-trim'
         include 'assets:filter-basic'
         include 'assets:overlay-basic'
-       
+        include 'ui:video-library'
+        include 'ui:video-composition'
+        include 'ui:audio-composition'
     }
 }
 
