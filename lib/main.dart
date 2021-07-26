@@ -1,3 +1,7 @@
+import 'dart:convert';
+import 'dart:ui';
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
 import 'package:imgly_sdk/imgly_sdk.dart';
 import 'package:video_editor_sdk/video_editor_sdk.dart';
@@ -42,6 +46,23 @@ class _MyAppState extends State<MyApp> {
     return configuration;
   }
 
+  Configuration jsCreateConfiguration() {
+    final androidConfiguration = Configuration(
+        export: ExportOptions(
+            video:
+                VideoOptions(format: VideoFormat.mp4, codec: VideoCodec.h264)));
+    final iosConfiguration = Configuration(
+        export: ExportOptions(
+            video: VideoOptions(
+                format: VideoFormat.quicktime, codec: VideoCodec.hevc)));
+
+    if (Platform.isAndroid)
+      return androidConfiguration;
+    else
+      return iosConfiguration;
+    // return configuration;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -49,10 +70,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   void presentEditor() async {
-    // final result = await VESDK.openEditor(
-    //     Video.composition(videos: ["assets/Skater.mp4"]),
-    //     configuration: createConfiguration());
-    final result = await VESDK.openEditor(Video("assets/Mantis.mp4"));
+    final result = await VESDK.openEditor(Video("assets/Mantis.mp4"),
+        configuration: jsCreateConfiguration());
     print(result?.toJson());
   }
 
